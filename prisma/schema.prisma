@@ -26,3 +26,6 @@ model User {
   create_at DateTime @default(now())
   update_at DateTime @updatedAt
 }
+model address {
+  address_id String @id @default(cuid())
+}

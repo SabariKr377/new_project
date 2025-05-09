@@ -14,18 +14,39 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum EnumUserRole {
+  Guiest
+  User
+  Admin
+}
+
 model User {
   User_id String @id @default(cuid())
   name String?
   gothram String?
   email String?
   country_code String?
-  phone_number String?
+  phone_number String       @unique
   dob DateTime?
+  roles  Role? @relation(fields: [role_id],references: [role_id])
+  role_id  String?
   is_active Boolean @default(true)
   create_at DateTime @default(now())
   update_at DateTime @updatedAt
 }
-model address {
-  address_id String @id @default(cuid())
+model Role {
+  role_id String @id @default(cuid())
+  name    EnumUserRole @unique
+  permissions  Permission[]
+  users   User[]
+  create_at DateTime @default(now())
+  update_at DateTime @updatedAt
+}
+
+model Permission{
+  identifier  String @id @unique
+  description String?
+  roles   Role[]
+  create_at DateTime @default(now())
+  update_at DateTime @updatedAt
 }

@@ -125,7 +125,22 @@ exports.Prisma.UserScalarFieldEnum = {
   country_code: 'country_code',
   phone_number: 'phone_number',
   dob: 'dob',
+  role_id: 'role_id',
   is_active: 'is_active',
+  create_at: 'create_at',
+  update_at: 'update_at'
+};
+
+exports.Prisma.RoleScalarFieldEnum = {
+  role_id: 'role_id',
+  name: 'name',
+  create_at: 'create_at',
+  update_at: 'update_at'
+};
+
+exports.Prisma.PermissionScalarFieldEnum = {
+  identifier: 'identifier',
+  description: 'description',
   create_at: 'create_at',
   update_at: 'update_at'
 };
@@ -144,10 +159,16 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
-
+exports.EnumUserRole = exports.$Enums.EnumUserRole = {
+  Guiest: 'Guiest',
+  User: 'User',
+  Admin: 'Admin'
+};
 
 exports.Prisma.ModelName = {
-  User: 'User'
+  User: 'User',
+  Role: 'Role',
+  Permission: 'Permission'
 };
 
 /**
